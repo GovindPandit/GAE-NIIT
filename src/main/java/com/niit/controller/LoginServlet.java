@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.niit.email.Email;
 import com.niit.model.User;
-
+//
 @WebServlet("/LoginController")
 public class LoginServlet extends HttpServlet 
 {
