@@ -13,6 +13,7 @@ public class Email
 {
    //changes made
 	//
+	//
     String to;
     String subject;
     String text;
