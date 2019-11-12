@@ -29,7 +29,7 @@ public class Email
     {
                 System.out.println("=============mail===========");
 		final String username = "govindpanditniit@gmail.com";
-		final String password = "Tuhinirankar@123&";
+		final String password = "";
 
 		Properties props = new Properties();
 		props.put("mail.smtp.auth", "true");
