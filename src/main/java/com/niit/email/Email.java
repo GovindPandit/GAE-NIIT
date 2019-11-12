@@ -11,7 +11,7 @@ import javax.mail.internet.MimeMessage;
 
 public class Email 
 {
-   
+   //changes made
     String to;
     String subject;
     String text;
