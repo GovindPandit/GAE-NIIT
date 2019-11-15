@@ -40,8 +40,8 @@ Steps to setup Google SDK in eclipse:
 
 
 MySQL Steps
-1)Download MySQL https://dev.mysql.com/downloads/file/?id=487427
-2)Extract zip file in c drive/program files
+1)Download MySQL https://dev.mysql.com/downloads/file/?id=490395
+2)Install Exe file
 3)Goto appengine.google.com
 	-Click on new project
 	-Create APplication
@@ -54,7 +54,7 @@ MySQL Steps
 5)Deploy to app engine standards
 
 
-MYSQL Setup
+MYSQL Online Setup
 1)Search for sql option from left pane
 2)click on sql
 3)click on mysql
