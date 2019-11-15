@@ -40,7 +40,7 @@ public class LoginServlet extends HttpServlet
 				PrintWriter out=response.getWriter();
 				out.println("<script>"
 						+ "alert('Welcome user');"
-						+ "window.location='index.jsp'"
+						+ "window.location='displayproducts.jsp'"
 						+ "</script>");
 			}
 			else
