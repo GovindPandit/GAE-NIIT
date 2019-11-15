@@ -2,6 +2,10 @@ package com.niit.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -22,23 +26,35 @@ public class LoginServlet extends HttpServlet
 		user.setUsername(request.getParameter("username"));
 		user.setPassword(request.getParameter("password"));
 		
-		if(user.getUsername().equals("Ankit123") && user.getPassword().equals("pass@123"))
+		try 
 		{
-			try
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb","root","root");
+			PreparedStatement ps=con.prepareStatement("select * from users where username=? and password=?");
+			ps.setString(1, user.getUsername());
+			ps.setString(2, user.getPassword());
+			ResultSet rs=ps.executeQuery();
+			
+			if(rs.next())
 			{
-				Email email=new Email("ankitjain1002@gmail.com", "Welcome!!!!", "Test Email!!!!");
-				email.sendEmail();
-				response.sendRedirect("index.jsp");
+				PrintWriter out=response.getWriter();
+				out.println("<script>"
+						+ "alert('Welcome user');"
+						+ "window.location='index.jsp'"
+						+ "</script>");
 			}
-			catch (Exception e) 
+			else
 			{
-				System.out.println(e);
+				PrintWriter out=response.getWriter();
+				out.println("<script>"
+						+ "alert('Incorrect username or password');"
+						+ "window.location='login.jsp'"
+						+ "</script>");
 			}
 		}
-		else
+		catch (Exception e) 
 		{
-			PrintWriter out=response.getWriter();
-			out.println("Incorrect username or password!!!!");
+			System.out.println(e);
 		}
 	}
 
