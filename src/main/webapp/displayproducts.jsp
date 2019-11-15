@@ -7,6 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	Display Products Page
+	<jsp:include page="header.jsp"></jsp:include>
+		Display Products Page
+	<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>
