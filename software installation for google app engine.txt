@@ -44,6 +44,9 @@ MySQL Steps
 2)Install Exe file
 3)Add MySQL 5.0.5 Dependency in your pom.xml file
 
+Maven Dependecy Website Name:
+https://mvnrepository.com/
+
 
 Online MySQL Steps
 
