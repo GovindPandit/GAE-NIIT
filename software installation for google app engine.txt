@@ -1,0 +1,79 @@
+Softwares required:
+	1)Eclipse
+		https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2019-06/R/eclipse-jee-2019-06-R-win32-x86_64.zip&mirror_id=105
+
+	  Donwload above zip file and extract in one folder.
+
+Steps to setup Google SDK in eclipse:
+
+1)run eclipse .exe as an administrator
+2)set your workspace(project storage location)
+3)Click Help tab-> eclipse marketplace 
+4)in search box type google cloud tools -> click install -> done!!!
+5)Donwload sdk from following link
+	->https://cloud.google.com/sdk/docs/quickstart-windows
+
+6)before installation set following path in your environment variables
+  	->c:\windows\system32
+	->JDK
+
+7)install the software run as administrator and click run anyway if you get any popup
+	->It will take upto 45 minutes to install
+
+8)set following path in your environment variables
+	->C:\Program Files (x86)\Google\Cloud SDK\google-cloud-sdk\bin
+
+9)open cmd as an administrator
+10)type the following command and hit enter:
+  gcloud components install app-engine-java
+	
+  Note: It will take upto 95 minutes to install
+
+11)In Eclipse click on windows tab -> preferences -> search goole -> google cloud tools -> set your sdk path -> click apply and close
+12)Goto appengine.google.com
+13)Click on drop down and then click on new project
+14)Enter Project name, click on edit and enter your unique project id
+15)select programming language and enter
+16)Select server from map and click enter
+17)Right click your project 
+18)Deploy to google cloud
+
+
+MySQL Steps
+1)Download MySQL https://docs.google.com/uc?export=download&id=0B-9Vl9hXQBBhb0ZBdDdHTUhKVW8
+2)Install Exe file
+3)Add MySQL 5.0.5 Dependency in your pom.xml file
+
+Maven Dependecy Website Name:
+https://mvnrepository.com/
+
+
+Online MySQL Steps
+
+3)Goto appengine.google.com
+	-Click on new project
+	-Create APplication
+	-Select map
+	-Select programming languages
+	-finish
+
+4)Goto eclipse
+5)Right click on project
+5)Deploy to app engine standards
+
+
+MYSQL Online Setup
+1)Search for sql option from left pane
+2)click on sql
+3)click on mysql
+4)enter instance id and enter password
+5)instance is being created. Please wait for 15 minutes.
+6)Click on your mysql database which is created
+7)click on connections
+8)add network
+9)enter any network name and ip address as 0.0.0./0 and click on save
+10)Set path of mysql in environment variables
+11)open cmd as an administrator
+12)type mysql --host=your_ip_address --user=root --password and enter
+13)enter your password and hit ok
+
