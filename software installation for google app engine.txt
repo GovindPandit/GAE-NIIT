@@ -1,3 +1,5 @@
+gcloud sql connect instance_name and hit enter
+
 Softwares required:
 	1)Eclipse
 		https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2019-06/R/eclipse-jee-2019-06-R-win32-x86_64.zip&mirror_id=105
