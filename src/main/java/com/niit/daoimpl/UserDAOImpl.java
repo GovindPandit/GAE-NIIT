@@ -1,5 +1,8 @@
 package com.niit.daoimpl;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.util.List;
 
 import com.niit.dao.UserDAO;
@@ -7,11 +10,26 @@ import com.niit.model.User;
 
 public class UserDAOImpl implements UserDAO
 {
-
+	
 	@Override
 	public boolean addUser(User user) 
 	{
-		return false;
+		try
+		{
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection con=DriverManager.getConnection("jdbc:mysql://34.67.195.30:3306/niitgae","root","root");
+			PreparedStatement ps=con.prepareStatement("insert into users (username,email,password) values(?,?,?)");
+			ps.setString(1, user.getUsername());
+			ps.setString(2, user.getEmail());
+			ps.setString(3, user.getPassword());
+			ps.executeUpdate();
+			return true;
+		}
+		catch (Exception e) 
+		{
+			System.out.println(e);
+			return false;
+		}
 	}
 
 	@Override

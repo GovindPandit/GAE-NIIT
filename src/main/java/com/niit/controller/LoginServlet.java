@@ -29,7 +29,7 @@ public class LoginServlet extends HttpServlet
 		try 
 		{
 			Class.forName("com.mysql.jdbc.Driver");
-			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb","root","root");
+			Connection con=DriverManager.getConnection("jdbc:mysql://34.67.195.30:3306/niitgae","root","root");
 			PreparedStatement ps=con.prepareStatement("select * from users where username=? and password=?");
 			ps.setString(1, user.getUsername());
 			ps.setString(2, user.getPassword());
