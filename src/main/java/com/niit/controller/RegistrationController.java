@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.niit.dao.UserDAO;
 import com.niit.daoimpl.UserDAOImpl;
@@ -31,23 +32,21 @@ public class RegistrationController extends HttpServlet
 		user.setPassword(req.getParameter("password"));
 		
 			boolean status=userDAO.addUser(user);
+			HttpSession hs=req.getSession();
 			if(status)
 			{
-				PrintWriter out=resp.getWriter();
-				out.println("<script>"
-					+ "alert('Registered successfully!!!');"
-					+ "window.location='login.jsp'"
-					+ "</script>");
+				hs.setAttribute("msg", "Registered successfully!!!");
+				hs.setAttribute("type", "success");
+				hs.setAttribute("pagename", "login.jsp");
+
 			}
 			else
 			{
-				PrintWriter out=resp.getWriter();
-				out.println("<script>"
-					+ "alert('Error!!!');"
-					+ "window.location='register.jsp'"
-					+ "</script>");
-				
+				hs.setAttribute("msg", "Error!!!");
+				hs.setAttribute("type", "error");
+				hs.setAttribute("pagename", "register.jsp");				
 			}
+			resp.sendRedirect("popup.jsp");
 			
 		
 	}

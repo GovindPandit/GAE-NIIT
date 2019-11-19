@@ -56,11 +56,28 @@ public class ProductDAOImpl implements ProductDAO
 	@Override
 	public boolean updateProduct(Product product) 
 	{
-		return false;
+		try 
+		{
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection con=DriverManager.getConnection("jdbc:mysql://34.67.195.30:3306/niitgae","root","root");
+			PreparedStatement ps=con.prepareStatement("update products set productname=?,price=?,quantity=?,description=? where productid=?");
+			ps.setString(1, product.getProductname());
+			ps.setFloat(2, product.getPrice());
+			ps.setInt(3, product.getQuantity());
+			ps.setString(4, product.getDescription());
+			ps.setInt(5, product.getProductid());
+			ps.executeUpdate();
+			return true;
+		} 
+		catch (Exception e) 
+		{
+			System.out.println(e);
+			return false;
+		}
 	}
 
 	@Override
-	public boolean updateProductById(int productid) 
+	public boolean displayProductById(int productid) 
 	{
 		return false;
 	}

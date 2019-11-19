@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.niit.email.Email;
 import com.niit.model.User;
@@ -35,22 +36,20 @@ public class LoginServlet extends HttpServlet
 			ps.setString(2, user.getPassword());
 			ResultSet rs=ps.executeQuery();
 			
+			HttpSession hs=request.getSession();
 			if(rs.next())
 			{
-				PrintWriter out=response.getWriter();
-				out.println("<script>"
-						+ "alert('Welcome user');"
-						+ "window.location='displayproducts.jsp'"
-						+ "</script>");
+				hs.setAttribute("msg", "Welcome "+user.getUsername());
+				hs.setAttribute("type", "success");
+				hs.setAttribute("pagename", "displayproducts.jsp");
 			}
 			else
 			{
-				PrintWriter out=response.getWriter();
-				out.println("<script>"
-						+ "alert('Incorrect username or password');"
-						+ "window.location='login.jsp'"
-						+ "</script>");
+				hs.setAttribute("msg", "Incorrect username or password!!!");
+				hs.setAttribute("type", "error");
+				hs.setAttribute("pagename", "login.jsp");
 			}
+			response.sendRedirect("popup.jsp");
 		}
 		catch (Exception e) 
 		{
