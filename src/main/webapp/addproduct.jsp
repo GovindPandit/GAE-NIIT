@@ -63,7 +63,7 @@
 		</c:if>
 		
 		<c:if test="${param.productid==null}">
-			<form action="AddProductController" method="post" class="col-lg-6 col-md-6 col-sm-12 col-xs-12 myform">
+			<form action="AddProductController" method="post" class="col-lg-6 col-md-6 col-sm-12 col-xs-12 myform" enctype="multipart/form-data">
 			<div class="form-group">
 				<label>Enter Product Name</label>
 				<input type="text" name="productname" class="form-control" placeholder="Enter Productname" />
@@ -79,6 +79,10 @@
 			<div class="form-group">
 				<label>Enter Description</label>
 				<input type="text" name="description" class="form-control" placeholder="Enter description" />
+			</div>
+			<div class="form-group">
+				<label>Select Image</label>
+				<input type="file" name="image" class="form-control" placeholder="Select Image" />
 			</div>
 			<div class="form-group">
 				<input type="submit" value="Add Product" class="btn btn-primary btn-block"/>

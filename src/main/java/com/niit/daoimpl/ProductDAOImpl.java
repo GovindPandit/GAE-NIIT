@@ -1,5 +1,6 @@
 package com.niit.daoimpl;
 
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -11,18 +12,20 @@ public class ProductDAOImpl implements ProductDAO
 {
 
 	@Override
-	public boolean addProduct(Product product) 
+	public boolean addProduct(Product product,InputStream is) 
 	{
 		try 
 		{
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection con=DriverManager.getConnection("jdbc:mysql://34.67.195.30:3306/niitgae","root","root");
-			PreparedStatement ps=con.prepareStatement("insert into products (productname,price,quantity,description) values(?,?,?,?)");
+			PreparedStatement ps=con.prepareStatement("insert into products (productname,price,quantity,description,image) values(?,?,?,?,?)");
 			ps.setString(1, product.getProductname());
 			ps.setFloat(2, product.getPrice());
 			ps.setInt(3, product.getQuantity());
 			ps.setString(4, product.getDescription());
+			ps.setBlob(5, is);
 			ps.executeUpdate();
+			con.close();
 			return true;
 		} 
 		catch (Exception e) 
@@ -83,3 +86,4 @@ public class ProductDAOImpl implements ProductDAO
 	}
 
 }
+

@@ -1,0 +1,6 @@
+alter table products
+add image longblob
+
+truncate table products
+
+select * from products

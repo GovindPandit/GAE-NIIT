@@ -10,8 +10,9 @@
 <title>Insert title here</title>
  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
-<link href="displayproduct.css" rel="stylesheet"/>
-
+<link href="css/displayproduct.css" rel="stylesheet"/>
+<link rel="stylesheet" href="css/bootstrap-magnify.min.css">
+ 
 </head>
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
@@ -34,8 +35,8 @@
 				<c:forEach items="${data.rows}" var="row">
 					<div class=" col-md-4">
 						
-						<div class="preview-pic tab-content">
-						  <div class="tab-pane active" id="pic-1"><img src="http://placekitten.com/400/252" class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="height: 300px"/></div>
+						<div class="preview-pic tab-content ">
+						  <div class="tab-pane active mag " id="pic-1"><img src="ImageServlet?productid=${row.productid}"  data-toggle="magnify" /></div>
 						 </div>
 						
 						
@@ -85,5 +86,6 @@
 		</div>
 	</div>
 	<jsp:include page="footer.jsp"></jsp:include>
+	<script src="js/bootstrap-magnify.min.js"></script>
 </body>
 </html>

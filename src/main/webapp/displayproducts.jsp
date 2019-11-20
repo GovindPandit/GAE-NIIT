@@ -32,8 +32,7 @@
             <div class="product-grid">
                 <div class="product-image">
                     <a href="displayproduct.jsp?productid=${row.productid}">
-                        <img class="pic-1" src="http://bestjquery.com/tutorial/product-grid/demo9/images/img-1.jpg">
-                        <img class="pic-2" src="http://bestjquery.com/tutorial/product-grid/demo9/images/img-2.jpg">
+                        <img  class="pic-1 col-lg-12 col-md-12 col-sm-12 col-xs-12" src="ImageServlet?productid=${row.productid}" class="img-responsive">
                     </a>
                     <ul class="social">
                         <li><a href="" data-tip="Quick View"><i class="fa fa-search"></i></a></li>
