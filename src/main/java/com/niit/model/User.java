@@ -1,12 +1,21 @@
 package com.niit.model;
 
-public class User 
+import java.io.Serializable;
+
+public class User implements Serializable
 {
 	private int userid;
 	private String username;
 	private String email;
 	private String password;
+	private String role;
 	
+	public String getRole() {
+		return role;
+	}
+	public void setRole(String role) {
+		this.role = role;
+	}
 	public int getUserid() {
 		return userid;
 	}

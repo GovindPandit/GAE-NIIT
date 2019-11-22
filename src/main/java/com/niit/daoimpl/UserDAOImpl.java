@@ -18,10 +18,11 @@ public class UserDAOImpl implements UserDAO
 		{
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection con=DriverManager.getConnection("jdbc:mysql://34.67.195.30:3306/niitgae","root","root");
-			PreparedStatement ps=con.prepareStatement("insert into users (username,email,password) values(?,?,?)");
+			PreparedStatement ps=con.prepareStatement("insert into users (username,email,password,role) values(?,?,?,?)");
 			ps.setString(1, user.getUsername());
 			ps.setString(2, user.getEmail());
 			ps.setString(3, user.getPassword());
+			ps.setString(4, "user");
 			ps.executeUpdate();
 			return true;
 		}
@@ -41,7 +42,23 @@ public class UserDAOImpl implements UserDAO
 	@Override
 	public boolean updateUser(User user) 
 	{
-		return false;
+		try
+		{
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection con=DriverManager.getConnection("jdbc:mysql://34.67.195.30:3306/niitgae","root","root");
+			PreparedStatement ps=con.prepareStatement("update users set username=?,email=? where userid=?");
+			ps.setString(1, user.getUsername());
+			ps.setString(2, user.getEmail());
+			ps.setInt(3, user.getUserid());
+			ps.executeUpdate();
+			return true;
+		}
+		catch (Exception e) 
+		{
+			System.out.println(e);
+			return false;
+		}
+
 	}
 
 	@Override

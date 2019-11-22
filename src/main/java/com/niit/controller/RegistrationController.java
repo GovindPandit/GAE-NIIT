@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 
 import com.niit.dao.UserDAO;
 import com.niit.daoimpl.UserDAOImpl;
+import com.niit.email.Email;
 import com.niit.model.User;
 
 @WebServlet(name = "RegistrationController",urlPatterns = "/RegistrationController")
@@ -31,13 +32,23 @@ public class RegistrationController extends HttpServlet
 		user.setEmail(req.getParameter("email"));
 		user.setPassword(req.getParameter("password"));
 		
+		
 			boolean status=userDAO.addUser(user);
 			HttpSession hs=req.getSession();
 			if(status)
 			{
-				hs.setAttribute("msg", "Registered successfully!!!");
-				hs.setAttribute("type", "success");
-				hs.setAttribute("pagename", "login.jsp");
+				try
+				{
+					Email email=new Email(user.getEmail(), "Registered Successfully!!!", "Welcome To GAE-Electo");
+					email.sendEmail();
+					hs.setAttribute("msg", "Registered successfully!!!");
+					hs.setAttribute("type", "success");
+					hs.setAttribute("pagename", "login.jsp");
+				}
+				catch (Exception e) 
+				{
+					System.out.println(e);
+				}
 
 			}
 			else

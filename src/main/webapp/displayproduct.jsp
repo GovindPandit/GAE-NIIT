@@ -75,9 +75,12 @@
 						</div>	
 						<div class="col-md-4">
 							<button class="btn btn-primary btn-block" type="button">Add To Cart</button>
-							<button class="btn btn-warning btn-block" type="button">Buy</button>
-							<a href="addproduct.jsp?productid=${row.productid}" class="btn btn-secondary btn-block" type="button">Edit</a>
-							<a href="DeleteController?productid=${row.productid}" class="btn btn-danger btn-block" type="button">Delete</a>
+							<a href="OrderController" class="btn btn-warning btn-block" type="button">Buy</a>
+							
+							<c:if test="${user.role='admin'}">
+								<a href="addproduct.jsp?productid=${row.productid}" class="btn btn-secondary btn-block" type="button">Edit</a>
+								<a href="DeleteController?productid=${row.productid}" class="btn btn-danger btn-block" type="button">Delete</a>
+							</c:if>
 						</div>
 					
 					</c:forEach>

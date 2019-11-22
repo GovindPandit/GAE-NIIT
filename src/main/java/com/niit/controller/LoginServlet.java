@@ -39,6 +39,10 @@ public class LoginServlet extends HttpServlet
 			HttpSession hs=request.getSession();
 			if(rs.next())
 			{
+				user.setUserid(rs.getInt("userid"));
+				user.setEmail(rs.getString("email"));
+				user.setRole(rs.getString("role"));
+				hs.setAttribute("user", user);
 				hs.setAttribute("msg", "Welcome "+user.getUsername());
 				hs.setAttribute("type", "success");
 				hs.setAttribute("pagename", "displayproducts.jsp");
