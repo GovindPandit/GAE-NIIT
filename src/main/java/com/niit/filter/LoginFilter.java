@@ -12,7 +12,7 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebFilter(urlPatterns = {"/addproduct.jsp"})
+@WebFilter(urlPatterns = {"/addproduct.jsp","/displaycartitems.jsp","/AddToCartController"})
 public class LoginFilter implements Filter 
 {
 
