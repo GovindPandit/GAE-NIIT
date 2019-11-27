@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.util.List;
 
 import com.niit.dao.UserDAO;
+import com.niit.datasource.DataSource;
 import com.niit.model.User;
 
 public class UserDAOImpl implements UserDAO
@@ -16,8 +17,7 @@ public class UserDAOImpl implements UserDAO
 	{
 		try
 		{
-			Class.forName("com.mysql.jdbc.Driver");
-			Connection con=DriverManager.getConnection("jdbc:mysql://34.67.195.30:3306/niitgae","root","root");
+			Connection con=DataSource.getConnection();
 			PreparedStatement ps=con.prepareStatement("insert into users (username,email,password,role) values(?,?,?,?)");
 			ps.setString(1, user.getUsername());
 			ps.setString(2, user.getEmail());
@@ -44,8 +44,7 @@ public class UserDAOImpl implements UserDAO
 	{
 		try
 		{
-			Class.forName("com.mysql.jdbc.Driver");
-			Connection con=DriverManager.getConnection("jdbc:mysql://34.67.195.30:3306/niitgae","root","root");
+			Connection con=DataSource.getConnection();
 			PreparedStatement ps=con.prepareStatement("update users set username=?,email=? where userid=?");
 			ps.setString(1, user.getUsername());
 			ps.setString(2, user.getEmail());

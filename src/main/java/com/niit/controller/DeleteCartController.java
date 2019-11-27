@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 
 import com.niit.dao.ProductDAO;
 import com.niit.daoimpl.ProductDAOImpl;
+import com.niit.datasource.DataSource;
 
 @WebServlet("/DeleteCartController")
 public class DeleteCartController extends HttpServlet
@@ -28,8 +29,7 @@ public class DeleteCartController extends HttpServlet
 		HttpSession hs=req.getSession();
 		try 
 		{
-			Class.forName("com.mysql.jdbc.Driver");
-			Connection con=DriverManager.getConnection("jdbc:mysql://34.67.195.30:3306/niitgae","root","root");
+			Connection con=DataSource.getConnection();
 			PreparedStatement ps=con.prepareStatement("delete from cartitems where cartitemid=?");
 			ps.setInt(1, cartitemid);
 			ps.executeUpdate();

@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.niit.datasource.DataSource;
+
 
 @WebServlet("/ImageServlet")
 public class ImageServlet extends HttpServlet
@@ -24,8 +26,7 @@ public class ImageServlet extends HttpServlet
 		
 		try 
 		{
-			Class.forName("com.mysql.jdbc.Driver");
-			Connection con=DriverManager.getConnection("jdbc:mysql://34.67.195.30:3306/niitgae","root","root");
+			Connection con=DataSource.getConnection();
 			PreparedStatement ps=con.prepareStatement("select image from products where productid=?");
 			ps.setInt(1, productid);
 			ResultSet rs=ps.executeQuery();

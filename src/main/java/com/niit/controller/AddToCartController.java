@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.niit.datasource.DataSource;
 import com.niit.model.User;
 
 @WebServlet("/AddToCartController")
@@ -27,8 +28,7 @@ public class AddToCartController extends HttpServlet
 		
 		try 
 		{
-			Class.forName("com.mysql.jdbc.Driver");
-			Connection con=DriverManager.getConnection("jdbc:mysql://34.67.195.30:3306/niitgae","root","root");
+			Connection con=DataSource.getConnection();
 			PreparedStatement ps=con.prepareStatement("insert into cartitems (userid,productid) values(?,?)");
 			ps.setInt(1, user.getUserid());
 			ps.setInt(2, productid);

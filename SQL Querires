@@ -1,0 +1,26 @@
+drop table users
+create table users
+(
+	userid integer primary key auto_increment,
+	username varchar(40),
+	email varchar(40),
+	password varchar(40),
+	role varchar(40)
+)
+
+
+create table products
+(
+	productid int primary key auto_increment,
+	productname varchar(40),
+	price float,
+	quantity int,
+	description varchar(40),
+	image longblob
+)
+
+select * from users
+
+update users
+set role='admin'
+where userid=1

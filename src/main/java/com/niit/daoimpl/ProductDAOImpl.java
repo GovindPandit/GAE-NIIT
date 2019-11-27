@@ -6,6 +6,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 
 import com.niit.dao.ProductDAO;
+import com.niit.datasource.DataSource;
 import com.niit.model.Product;
 
 public class ProductDAOImpl implements ProductDAO 
@@ -16,8 +17,7 @@ public class ProductDAOImpl implements ProductDAO
 	{
 		try 
 		{
-			Class.forName("com.mysql.jdbc.Driver");
-			Connection con=DriverManager.getConnection("jdbc:mysql://34.67.195.30:3306/niitgae","root","root");
+			Connection con=DataSource.getConnection();
 			PreparedStatement ps=con.prepareStatement("insert into products (productname,price,quantity,description,image) values(?,?,?,?,?)");
 			ps.setString(1, product.getProductname());
 			ps.setFloat(2, product.getPrice());
@@ -41,8 +41,7 @@ public class ProductDAOImpl implements ProductDAO
 	{
 		try 
 		{
-			Class.forName("com.mysql.jdbc.Driver");
-			Connection con=DriverManager.getConnection("jdbc:mysql://34.67.195.30:3306/niitgae","root","root");
+			Connection con=DataSource.getConnection();
 			PreparedStatement ps=con.prepareStatement("delete from products where productid=?");
 			ps.setInt(1, productid);
 			ps.executeUpdate();
@@ -61,8 +60,7 @@ public class ProductDAOImpl implements ProductDAO
 	{
 		try 
 		{
-			Class.forName("com.mysql.jdbc.Driver");
-			Connection con=DriverManager.getConnection("jdbc:mysql://34.67.195.30:3306/niitgae","root","root");
+			Connection con=DataSource.getConnection();
 			PreparedStatement ps=con.prepareStatement("update products set productname=?,price=?,quantity=?,description=? where productid=?");
 			ps.setString(1, product.getProductname());
 			ps.setFloat(2, product.getPrice());

@@ -39,8 +39,8 @@ public class RegistrationController extends HttpServlet
 			{
 				try
 				{
-					Email email=new Email(user.getEmail(), "Registered Successfully!!!", "Welcome To GAE-Electo");
-					email.sendEmail();
+					//Email email=new Email(user.getEmail(), "Registered Successfully!!!", "Welcome To GAE-Electo");
+					//email.sendEmail();
 					hs.setAttribute("msg", "Registered successfully!!!");
 					hs.setAttribute("type", "success");
 					hs.setAttribute("pagename", "login.jsp");
