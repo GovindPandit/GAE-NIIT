@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,6 +18,7 @@ import com.niit.dao.UserDAO;
 import com.niit.daoimpl.UserDAOImpl;
 import com.niit.email.Email;
 import com.niit.model.User;
+import com.niit.servlet.ValidateUser;
 
 @WebServlet(name = "RegistrationController",urlPatterns = "/RegistrationController")
 public class RegistrationController extends HttpServlet
@@ -33,8 +35,15 @@ public class RegistrationController extends HttpServlet
 		user.setPassword(req.getParameter("password"));
 		
 		
+		String emailStatus=ValidateUser.validateEmail(user.getEmail());
+		String usernameStatus=ValidateUser.validateUsername(user.getUsername());
+		String passwordStatus=ValidateUser.validatePassword(user.getPassword());
+		HttpSession hs=req.getSession();
+		
+		if(emailStatus.isEmpty() && usernameStatus.isEmpty() && passwordStatus.isEmpty())
+		{
+			
 			boolean status=userDAO.addUser(user);
-			HttpSession hs=req.getSession();
 			if(status)
 			{
 				try
@@ -58,7 +67,20 @@ public class RegistrationController extends HttpServlet
 				hs.setAttribute("pagename", "register.jsp");				
 			}
 			resp.sendRedirect("popup.jsp");
+		}
+		else
+		{
+			hs.setAttribute("msgusername", usernameStatus);
+			hs.setAttribute("msgemail", emailStatus);
+			hs.setAttribute("msgpassword", passwordStatus);
 			
+			hs.setAttribute("user", user);
+			
+			hs.setAttribute("msg", "Error!!!");
+			hs.setAttribute("type", "error");
+			hs.setAttribute("pagename", "register.jsp");
+			resp.sendRedirect("popup.jsp");
+		}
 		
 	}
 }

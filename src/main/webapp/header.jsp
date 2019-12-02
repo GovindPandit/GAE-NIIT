@@ -55,6 +55,12 @@
       	<li class="nav-item">
     	    <a class="nav-link" href="login.jsp">Logout</a>
       	</li>
+      	<li class="nav-item">
+    	    <a class="nav-link" id="lowtohigh" href="#">Low To High</a>
+      	</li>
+      	<li class="nav-item">
+    	    <a class="nav-link" id="hightolow" href="#">High To Low</a>
+      	</li>
       
       </c:if>
       
@@ -75,8 +81,8 @@
       </li>
        -->
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+    <form class="form-inline my-2 my-lg-0" action="displayproducts.jsp" method="post">
+      <input class="form-control mr-sm-2" type="search" name="productname" id="search" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
   </div>

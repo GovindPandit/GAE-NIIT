@@ -98,7 +98,7 @@
 						</div>	
 						<div class="col-md-4">
 							<a href="AddToCartController?productid=${row.productid}" class="btn btn-primary btn-block" type="button">Add To Cart</a>
-							<a href="OrderController" class="btn btn-warning btn-block" type="button">Buy</a>
+							<a href="OrderController?productid=${row.productid}" class="btn btn-warning btn-block" type="button">Buy</a>
 							
 							<c:if test="${user!=null}">
 							<c:if test="${user.role=='admin'}">
